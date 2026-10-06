@@ -4,6 +4,15 @@
 
 目前範例會在 TCP 連線建立後，持續傳送 `0x00`～`0xFF` 循環遞增的 unsigned 8-bit 測試資料。每個 TCP payload byte 代表一筆資料，不包含額外的封包標頭或時間戳記。
 
+# Zynq-7020 FPGA TCP Server
+
+A synthesizable Gigabit Ethernet TCP server implemented entirely in
+Verilog programmable logic. No Linux, processor, or software network
+stack is required.
+
+以 Zynq-7020 純 PL 實作的 Gigabit Ethernet TCP Server，不依賴
+PS、Linux 或軟體協定棧。
+
 ## 主要功能
 
 - 1 GbE RGMII／GMII 資料路徑
