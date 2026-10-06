@@ -1,8 +1,8 @@
-# TOE_zynq7020
+# TCP_ZYNQ7020
 
 以 Zynq-7020 **純 PL** 實作的 Gigabit Ethernet TCP Server。FPGA 透過 RGMII 連接 Ethernet PHY，不依賴 PS、Linux 或軟體協定棧，適合用於高速資料傳輸與網路協定實驗。
 
-目前範例會在 TCP 連線建立後，持續傳送 `0x00`～`0xFF` 循環遞增的 8-bit 測試資料。
+目前範例會在 TCP 連線建立後，持續傳送 `0x00`～`0xFF` 循環遞增的 unsigned 8-bit 測試資料。每個 TCP payload byte 代表一筆資料，不包含額外的封包標頭或時間戳記。
 
 ## 主要功能
 
@@ -39,7 +39,7 @@ FPGA 端設定可在 [`rtl/top.v`](rtl/top.v) 修改。
 
 ## 快速開始
 
-1. 使用 Vivado 2025.1 開啟 [`prj/toe_zynq7020.xpr`](prj/toe_zynq7020.xpr)。
+1. 使用 Vivado 2025.1 開啟 [`prj/tcp_zynq7020.xpr`](prj/tcp_zynq7020.xpr)。
 2. 依序執行 **Synthesis → Implementation → Generate Bitstream**。
 3. 使用 Hardware Manager 將 bitstream 燒錄至開發板。
 4. 將 PC 有線網卡設為固定 IP，例如 `192.168.1.102/24`。
@@ -105,6 +105,8 @@ end
 
 若使用者邏輯暫時無法接收，可將 `app_rx_ready` 拉低，核心會保持目前的 `data`、`valid` 與 `last`。
 
+目前的 `top` 會接收 PC 傳來的資料，並將 `0x01`、`0x00` 分別記錄為開始與停止狀態。不過目前 TX valid 仍直接跟隨 TCP 連線狀態，因此連線建立後會持續傳送測試資料；這兩個命令尚未實際暫停或恢復 TX 串流。
+
 ### 換成 ADC 或其他資料來源
 
 1. 在 [`rtl/top.v`](rtl/top.v) 移除或取代 `test_counter`。
@@ -115,22 +117,42 @@ end
 
 ## Python 工具
 
+建議使用 Python 3.11（目前使用版本為 3.11.9）。標準函式庫不需要另外安裝，額外套件可使用以下指令安裝：
+
+```powershell
+python -m pip install numpy matplotlib pandas
+```
+
 | 程式 | 用途 |
 | --- | --- |
 | [`Realtime_ADC_Monitor.py`](python/Realtime_ADC_Monitor.py) | 即時顯示 8-bit 資料、TCP 速率、時域波形與 NumPy rFFT 頻譜；不會寫入檔案 |
 | [`Catch_8bit.py`](python/Catch_8bit.py) | 接收指定長度的資料，可檢查遞增測試碼並輸出 BIN／CSV |
+| [`CSV_show.py`](python/CSV_show.py) | 讀取既有 CSV，顯示時域波形並使用 NumPy rFFT 分析頻譜 |
+
+執行即時監看：
 
 ```powershell
-python -m pip install numpy matplotlib
 python python/Realtime_ADC_Monitor.py
 ```
 
-`Realtime_ADC_Monitor.py` 預設以 250 MS/s 計算頻率軸；若實際資料取樣率不同，請修改程式中的 `sample_rate_hz`。
+接收固定長度的資料：
+
+```powershell
+python python/Catch_8bit.py
+```
+
+分析已儲存的 CSV：
+
+```powershell
+python python/CSV_show.py
+```
+
+`Realtime_ADC_Monitor.py` 預設以 125 MS/s 計算頻率軸；`CSV_show.py` 預設以 25 MS/s 計算，並標示預期的 500 kHz 訊號。若實際取樣率不同，請先修改對應程式中的取樣率設定。
 
 ## 專案結構
 
 ```text
-TOE_zynq7020/
+TCP_ZYNQ7020/
 ├─ prj/       Vivado 專案
 ├─ rtl/       ARP、ICMP、TCP、MDIO 與 RGMII RTL
 ├─ sim/       Top、TCP、MDIO 等 testbench
@@ -144,3 +166,7 @@ TOE_zynq7020/
 - 本專案目前是固定 IPv4、單一 TCP 連線的實驗設計。
 - 目前 top module 傳送的是測試計數資料；接入實際 ADC 時，請替換 [`rtl/test_counter.v`](rtl/test_counter.v) 的資料來源。
 - 不包含 DHCP、IPv6 或完整的 TCP congestion control。
+
+## 授權
+
+本專案目前尚未指定統一的開源授權。若要公開、修改或再散布此專案，請先確認其中使用或參考的第三方程式碼授權，並在確認後加入適合的 `LICENSE` 與來源說明。
