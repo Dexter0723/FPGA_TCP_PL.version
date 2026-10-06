@@ -1,0 +1,32 @@
+# Vivado 可重新產生的資料夾
+prj/*.cache/            
+prj/*.gen/              
+prj/*.hw/               
+prj/*.ip_user_files/    
+prj/*.runs/             
+prj/*.sim/              
+# 忽略名稱以 .cache結尾的資料夾
+# 忽略名稱以 .gen結尾的資料夾
+# 忽略名稱以 .hw結尾的資料夾
+# 忽略名稱以 .ip_user_files結尾的資料夾
+# 忽略名稱以 .runs結尾的資料夾
+# 忽略名稱以 .sim結尾的資料夾
+
+# Vivado 暫存檔和輸出檔
+.Xil/                                
+*.jou                   
+*.log                   
+*.str                   
+*.pb                    
+*.wdb                   
+# 忽略名稱以 .Xil結尾的資料夾
+# 忽略名稱以 .jou結尾的檔案
+# 忽略名稱以 .log結尾的檔案
+# 忽略名稱以 .str結尾的檔案
+# 忽略名稱以 .pb結尾的檔案
+# 忽略名稱以 .wdb結尾的檔案
+
+# Python 暫存檔
+# 忽略名稱以 .pyc結尾的檔案
+__pycache__/            
+*.pyc                   
