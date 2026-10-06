@@ -18,7 +18,8 @@ prj/*.sim/
 *.log                   
 *.str                   
 *.pb                    
-*.wdb                   
+*.wdb      
+*.dcp             
 # 忽略名稱以 .Xil結尾的資料夾
 # 忽略名稱以 .jou結尾的檔案
 # 忽略名稱以 .log結尾的檔案

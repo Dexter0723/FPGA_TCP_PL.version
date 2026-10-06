@@ -166,7 +166,8 @@ TCP_ZYNQ7020/
 - 本專案目前是固定 IPv4、單一 TCP 連線的實驗設計。
 - 目前 top module 傳送的是測試計數資料；接入實際 ADC 時，請替換 [`rtl/test_counter.v`](rtl/test_counter.v) 的資料來源。
 - 不包含 DHCP、IPv6 或完整的 TCP congestion control。
+- The pin constraints are based on the ALIENTEK ATK-DF7020P board documentation.ALIENTEK is a trademark of its respective owner.
 
-## 授權
+## License
+This project is licensed under the [MIT License](LICENSE).
 
-本專案目前尚未指定統一的開源授權。若要公開、修改或再散布此專案，請先確認其中使用或參考的第三方程式碼授權，並在確認後加入適合的 `LICENSE` 與來源說明。
