@@ -438,25 +438,13 @@ always @(posedge clk or negedge rst_n) begin
                 crc_en     <= 1'b0;
                 case (byte_count)
                     8'd0:
-                        gmii_txd <= {~crc_next[24],  ~crc_next[25],
-                                     ~crc_next[26],  ~crc_next[27],
-                                     ~crc_next[28],  ~crc_next[29],
-                                     ~crc_next[30],  ~crc_next[31]};
+                        gmii_txd <= ~crc_next[7:0];
                     8'd1:
-                        gmii_txd <= {~crc_data[16], ~crc_data[17],
-                                     ~crc_data[18], ~crc_data[19],
-                                     ~crc_data[20], ~crc_data[21],
-                                     ~crc_data[22], ~crc_data[23]};
+                        gmii_txd <= ~crc_data[15:8];
                     8'd2:
-                        gmii_txd <= {~crc_data[8],  ~crc_data[9],
-                                     ~crc_data[10], ~crc_data[11],
-                                     ~crc_data[12], ~crc_data[13],
-                                     ~crc_data[14], ~crc_data[15]};
+                        gmii_txd <= ~crc_data[23:16];
                     default:
-                        gmii_txd <= {~crc_data[0], ~crc_data[1],
-                                     ~crc_data[2], ~crc_data[3],
-                                     ~crc_data[4], ~crc_data[5],
-                                     ~crc_data[6], ~crc_data[7]};
+                        gmii_txd <= ~crc_data[31:24];
                 endcase
                 if (byte_count == 8'd3) begin
                     byte_count <= 8'd0;
