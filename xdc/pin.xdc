@@ -7,6 +7,25 @@ set_property -dict {PACKAGE_PIN N16 IOSTANDARD LVCMOS33} [get_ports sys_rst_n]
 #Clock
 create_clock -period 20.000 -name sys_clk [get_ports sys_clk]
 create_clock -period 8.000 -name eth_rxc [get_ports eth_rxc]
+
+create_generated_clock \
+    -name adc_clk \
+    -source [get_ports sys_clk] \
+    -divide_by 2 \
+    [get_pins adc_inst/adc_clk_div_reg/Q]
+#=====================================================================================
+#=====================================================================================
+#AD
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN U17} [get_ports {ad_data[7]}] 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN T16} [get_ports {ad_data[6]}] 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN Y16} [get_ports {ad_data[5]}] 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN Y17} [get_ports {ad_data[4]}] 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN T15} [get_ports {ad_data[3]}] 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN T14} [get_ports {ad_data[2]}] 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN W16} [get_ports {ad_data[1]}] 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN V16} [get_ports {ad_data[0]}] 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN V18} [get_ports adc_clk] 
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN V17} [get_ports ad_otr]
 #=====================================================================================
 #=====================================================================================
 #Ethernet PHY
