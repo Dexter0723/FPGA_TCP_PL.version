@@ -432,7 +432,7 @@ always @(posedge clk or negedge rst_n) begin
                     byte_count <= byte_count + 1'b1;
                 end
             end
-            //456
+
             ST_FCS: begin
                 gmii_tx_en <= 1'b1;
                 crc_en     <= 1'b0;
