@@ -232,6 +232,10 @@ python python/CSV_show.py
 marks an expected 500 kHz input signal. Update the corresponding
 sampling-rate setting when using a different ADC configuration.
 
+## Demo
+
+![Zynq-7020 FPGA TCP server demo]("D:\Screen_to_GIF\realtime.gif")
+
 ## Project Structure
 
 ```text

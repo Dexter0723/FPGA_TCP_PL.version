@@ -151,6 +151,10 @@ python python/CSV_show.py
 
 `Realtime_ADC_Monitor.py` 預設以 125 MS/s 計算頻率軸；`CSV_show.py` 預設以 25 MS/s 計算，並標示預期的 500 kHz 訊號。若實際取樣率不同，請先修改對應程式中的取樣率設定。
 
+## Demo
+
+![Zynq-7020 FPGA TCP server demo]("D:\Screen_to_GIF\realtime.gif")
+
 ## 專案結構
 
 ```text
