@@ -153,7 +153,7 @@ python python/CSV_show.py
 
 ## Demo
 
-![Zynq-7020 FPGA TCP server demo]("D:\Screen_to_GIF\realtime.gif")
+![Zynq-7020 FPGA TCP server demo](docs\realtime.gif)
 
 ## 專案結構
 

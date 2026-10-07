@@ -234,7 +234,7 @@ sampling-rate setting when using a different ADC configuration.
 
 ## Demo
 
-![Zynq-7020 FPGA TCP server demo]("D:\Screen_to_GIF\realtime.gif")
+![Zynq-7020 FPGA TCP server demo](docs\realtime.gif)
 
 ## Project Structure
 
