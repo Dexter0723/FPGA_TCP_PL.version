@@ -19,7 +19,7 @@ class MonitorConfig:
     tcp_ip: str = "192.168.1.10"
     tcp_port: int = 5000
 
-    sample_rate_hz: float = 125_000_000.0
+    sample_rate_hz: float = 25_000_000.0
     display_points: int = 2_000
     plot_buffer_size: int = 10_000
 
