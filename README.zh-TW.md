@@ -165,7 +165,11 @@ The ADC operates at 25 MSPS, corresponding to a raw payload rate of approximatel
 
 The monitor detects a stable peak near 2 MHz while continuously receiving ADC data at approximately 200 Mbit/s.
 
-![Real-time FPGA ADC TCP monitor with a 2 MHz input signal](docs/2MHZ.gif)
+<p align="center">
+  <img src="docs/2MHZ.gif"
+       alt="Real-time FPGA ADC TCP monitor with a 2 MHz input signal"
+       width="100%">
+</p>
 
 ### 1.0 MHz Input Signal and Harmonics
 
@@ -173,7 +177,11 @@ This example uses an approximately 1.0 MHz input signal. The fundamental frequen
 
 The displayed noise floor and harmonic components originate from the complete acquisition path, which may include the signal source, analog front end, ADC quantization, clock jitter, power noise, and digital coupling.
 
-![Real-time FPGA ADC TCP monitor showing a 1.0 MHz to 10.0 MHz signal and harmonics](docs/1~10MHZ.gif)
+<p align="center">
+  <img src="docs/1~10MHZ.gif"
+       alt="Real-time FPGA ADC TCP monitor showing a 1.0 MHz to 10.0 MHz signal and harmonics"
+       width="100%">
+</p>
 
 The frequency-domain display is intended as a real-time diagnostic tool. No digital low-pass filter is applied to the received samples; only DC removal and a Hann window are used before the FFT.
 
