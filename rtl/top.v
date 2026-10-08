@@ -54,11 +54,9 @@ wire       tcp_rx_last;
 wire       tcp_rx_ready;
 wire       tcp_rx_fire;
 
-// reg        capture_enable;
 reg        rx_packet_done;
 
 assign tcp_rx_ready = 1'b1;
-// assign tcp_rx_fire  = tcp_rx_valid && tcp_rx_ready;
 
 wire       gmii_rx_clk;
 wire       gmii_rx_dv;
@@ -67,32 +65,6 @@ wire [7:0] gmii_rxd;
 wire       gmii_tx_clk;
 wire       gmii_tx_en;
 wire [7:0] gmii_txd;
-
-// always @(posedge tcp_app_clk or negedge sys_rst_n) begin
-//     if (!sys_rst_n) begin
-//         capture_enable <= 1'b0;
-//         rx_packet_done <= 1'b0;
-//     end
-//     else begin
-//         rx_packet_done <= 1'b0;
-
-//         if (tcp_rx_fire) begin
-//             case (tcp_rx_data)
-//                 8'h01:
-//                     capture_enable <= 1'b1;
-
-//                 8'h00:
-//                     capture_enable <= 1'b0;
-
-//                 default:
-//                     capture_enable <= capture_enable;
-//             endcase
-
-//             if (tcp_rx_last)
-//                 rx_packet_done <= 1'b1;
-//         end
-//     end
-// end
 
 //========================== test ==========================
 // wire [7:0] sample_cnt;
