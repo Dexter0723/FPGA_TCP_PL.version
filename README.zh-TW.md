@@ -165,14 +165,14 @@ The ADC operates at 25 MSPS, corresponding to a raw payload rate of approximatel
 
 The monitor detects a stable peak near 2 MHz while continuously receiving ADC data at approximately 200 Mbit/s.
 
-![Real-time FPGA ADC TCP monitor with a 2 MHz input signal](./docs/2MHz.gif)
+![Real-time FPGA ADC TCP monitor with a 2 MHz input signal](docs/2MHZ.gif)
 
 
 ### 1 MHz to 10 MHz Frequency Sweep
 
 This demonstration shows the detected peak moving from approximately 1 MHz to 10 MHz while ADC samples are continuously streamed through the FPGA TCP engine.
 
-![Real-time FPGA ADC TCP monitor showing a 1 MHz to 10 MHz frequency sweep](./docs/1to10MHz.gif)
+![Real-time FPGA ADC TCP monitor showing a 1 MHz to 10 MHz frequency sweep](docs/1~10MHZ.gif)
 
 The frequency-domain display is intended as a real-time diagnostic tool. No digital low-pass filter is applied to the received samples; only DC removal and a Hann window are used before the FFT.
 
