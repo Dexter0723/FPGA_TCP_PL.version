@@ -163,11 +163,11 @@ The ADC operates at 25 MSPS, corresponding to a raw payload rate of approximatel
 
 ### 1.1 MHz Input Signal
 
-The monitor detects a stable peak near 1.1 MHz while continuously receiving ADC data at approximately 200 Mbit/s.
+The monitor detects a stable peak near 2 MHz while continuously receiving ADC data at approximately 200 Mbit/s.
 
 <p align="center">
-  <img src="docs/images/adc-monitor-1p1mhz.gif"
-       alt="Real-time FPGA ADC TCP monitor with a 1.1 MHz input signal"
+  <img src="docs/2MHZ.gif"
+       alt="Real-time FPGA ADC TCP monitor with a 2 MHz input signal"
        width="100%">
 </p>
 
@@ -178,8 +178,8 @@ This example uses an approximately 1.0 MHz input signal. The fundamental frequen
 The displayed noise floor and harmonic components originate from the complete acquisition path, which may include the signal source, analog front end, ADC quantization, clock jitter, power noise, and digital coupling.
 
 <p align="center">
-  <img src="docs/images/adc-monitor-1mhz.gif"
-       alt="Real-time FPGA ADC TCP monitor showing a 1.0 MHz signal and harmonics"
+  <img src="docs/1~10MHZ.gif"
+       alt="Real-time FPGA ADC TCP monitor showing a 1.0 MHz to 10.0 MHz signal and harmonics"
        width="100%">
 </p>
 
