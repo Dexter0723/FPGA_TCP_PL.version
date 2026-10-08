@@ -155,6 +155,36 @@ python python/CSV_show.py
 
 ![Zynq-7020 FPGA TCP server demo](docs/realtime.gif)
 
+## ADC Streaming Demo
+
+The following demonstrations show unsigned 8-bit ADC samples being streamed continuously from the FPGA to a PC through the hardware TCP engine.
+
+The ADC operates at 25 MSPS, corresponding to a raw payload rate of approximately 200 Mbit/s. The Python monitor displays the received samples in the time domain and calculates a one-sided NumPy rFFT spectrum in real time. A Hann window is applied before the FFT to reduce spectral leakage.
+
+### 1.1 MHz Input Signal
+
+The monitor detects a stable peak near 1.1 MHz while continuously receiving ADC data at approximately 200 Mbit/s.
+
+<p align="center">
+  <img src="docs/images/adc-monitor-1p1mhz.gif"
+       alt="Real-time FPGA ADC TCP monitor with a 1.1 MHz input signal"
+       width="100%">
+</p>
+
+### 1.0 MHz Input Signal and Harmonics
+
+This example uses an approximately 1.0 MHz input signal. The fundamental frequency is clearly visible together with harmonic and spurious components across the 0–12.5 MHz Nyquist band.
+
+The displayed noise floor and harmonic components originate from the complete acquisition path, which may include the signal source, analog front end, ADC quantization, clock jitter, power noise, and digital coupling.
+
+<p align="center">
+  <img src="docs/images/adc-monitor-1mhz.gif"
+       alt="Real-time FPGA ADC TCP monitor showing a 1.0 MHz signal and harmonics"
+       width="100%">
+</p>
+
+The frequency-domain display is intended as a real-time diagnostic tool. No digital low-pass filter is applied to the received samples; only DC removal and a Hann window are used before the FFT.
+
 ## 專案結構
 
 ```text
